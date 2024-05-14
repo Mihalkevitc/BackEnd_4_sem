@@ -1,0 +1,226 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 100px;
+    margin-right: 50px;
+}
+
+main p {
+    color: black;
+    text-shadow: none;
+}
+
+.cart {
+    position: relative;
+    left: 50px;
+    width: 1000px;
+}
+
+.contactsMenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрируем содержимое по горизонтали */
+    margin: 0 auto; /* Центрируем форму по горизонтали */
+    width: 80%; /* Ширина формы */
+    max-width: 600px; /* Максимальная ширина формы */
+    padding: 20px; /* Добавляем внутренние отступы */
+    background-color: gold; /* Цвет фона */
+    border-radius: 20px; /* Закругляем углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+.contactsMenu h2 {
+    text-align: center; /* Центрируем заголовки */
+    margin-bottom: 15px; /* Добавляем небольшой отступ снизу */
+}
+
+.contactsMenu p {
+    font-size: 20px; /* Размер шрифта */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+}
+
+.contactsMenu input[type="radio"] {
+    margin-bottom: 10px; /* Добавляем отступ между радио кнопками */
+}
+
+.contactsMenu button {
+    margin-top: 20px; /* Добавляем отступ над кнопкой */
+    width: 100%; /* Занимаем всю доступную ширину */
+    background-color: crimson; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем границу */
+    padding: 10px; /* Добавляем внутренние отступы */
+    border-radius: 10px; /* Закругляем углы */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.contactsMenu button:hover {
+    background-color: #8B0000; /* Изменяем цвет фона при наведении */
+}
+
+#text2 {
+    font-style: italic;
+}
+
+.textInput input {
+    border-radius: 20px;
+    margin: 10px;
+    padding: 5px;
+    background: #EFB19C;
+    border: rgb(128, 128, 128);
+    height: 30px;
+    width: 340px;
+}
+
+.topBar {
+    position: relative;
+    display: grid;
+    /*grid-template-columns: 1fr 0.7fr 0.7fr 0.7fr;*/
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    border: solid 2px rgb(128, 128, 128);
+    border-radius: 15px;
+    background: gold;
+    color: #8B0000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.topBar div {
+    padding: 10px;
+}
+
+.topBar div:last-child {
+    /*border-right: solid 2px rgb(128, 128, 128);*/
+}
+
+.topBar p {
+    font-size: 20px;
+    margin: 0;
+}
+
+.oneGood {
+    margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    border-bottom: solid 2px rgb(128, 128, 128);
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+    /*background: rgba(0, 0, 0, 0.5);*/
+}
+
+.card {
+    color: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-weight: 550;
+    text-decoration: none;
+    justify-items: center;
+    align-items: center;
+}
+
+.card img {
+    max-width: 150px; /* Добавлено новое правило */
+    height: auto; /* Добавлено новое правило */
+    border-radius: 20px;
+}
+
+.card a {
+    color: black;
+    text-decoration: none;
+}
+
+.remove-btn:nth-child(2):hover {
+    color: crimson;
+    /*border: 2px solid red;*/
+    border-radius: 100%;
+    /*background-color: white;*/
+}
+
+.remove-btn {
+    background: crimson;
+    border-radius: 100%;
+    margin-left: 10px;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.shineButton {
+    text-decoration: none;
+    padding: 10px 30px;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    overflow: hidden;
+    border: 2px solid #F02C6E;
+    border-radius: 8px;
+    font-size: 25px;
+    color: #F02C6E;
+    transition: .2s ease-in-out;
+}
+
+
+.shineButton:hover {
+    background: white;
+    color: black;
+}
+
+.shineButton:hover:before {
+    left: 150px;
+    transition: .5s ease-in-out;
+}
+
+/*--------------------------------------------------------------------*/
+/* Стили для модального окна */
+.modal {
+    display: none; /* Скрыть модальное окно по умолчанию */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Стили для кнопки закрытия */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.remove-btn {
+    align-self: center;
+    background-image: url('/static/images/urna.png');
+    background-size: 75%; /* Растягивает изображение на всю кнопку */
+    background-repeat: no-repeat;
+    background-position: center;
+}

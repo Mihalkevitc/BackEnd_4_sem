@@ -1,0 +1,195 @@
+main{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 50px 50px 100px auto;
+}
+
+.userContainer {
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px; /* Добавлен отступ между блоками */
+}
+
+.contactsMenu {
+    background-color: #36113d; /* Фиолетовый цвет фона */
+    border-radius: 20px; /* Скругление углов */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Тень */
+    padding: 30px; /* Внутренний отступ */
+    width: 90%; /* Максимальная ширина блока */
+    height: 20rem;
+    margin: 0 auto; /* Центрирование по горизонтали */
+    position: relative; /* Добавляем позиционирование */
+    background-image: url('/static/images/user.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; /* Изображение будет заполнено, чтобы полностью покрыть блок */
+    background-position: center; /* Положение изображения по центру */
+}
+
+.centerIcon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Добавляем немного отступа снизу */
+    width: 30%;
+    height: 90%;
+}
+
+
+.userHeader {
+    background-color: gold; /* Золотистый цвет фона заголовка */
+    color: black; /* Белый цвет текста заголовка */
+    font-size: 35px;
+    padding: 15px; /* Внутренний отступ */
+    text-align: center; /* Выравнивание текста по центру */
+    border-radius: 15px; /* Скругление верхних углов */
+}
+
+.userHeader p {
+    margin: 0; /* Убираем внешние отступы у абзацев */
+}
+
+.textInput {
+    margin-top: 30px; /* Внешний отступ сверху */
+    font-size: 25px;
+    color: white;
+}
+
+.textInput p {
+    margin: 15px 0; /* Внутренний отступ для каждого абзаца */
+}
+
+.shineButton {
+    background-color: crimson; /* Красный цвет фона кнопки */
+    color: #fff; /* Белый цвет текста кнопки */
+    border: none; /* Убираем границы */
+    border-radius: 5px; /* Скругляем углы */
+    padding: 12px 24px; /* Внутренний отступ */
+    cursor: pointer; /* Изменяем курсор при наведении */
+    display: block; /* Располагаем кнопку на новой строке */
+    margin: 30px auto 0; /* Внешний отступ сверху, автоматическое центрирование по горизонтали */
+    transition: background-color 0.3s; /* Плавное изменение цвета при наведении */
+}
+
+.shineButton:hover {
+    background-color: gold; /* Темно-красный цвет фона кнопки при наведении */
+}
+
+.userImage {
+    position: absolute; /* Абсолютное позиционирование */
+    top: -40px; /* Отступ от верхнего края */
+    left: calc(50% - 40px); /* Положение по центру по горизонтали */
+    width: 80px; /* Ширина изображения */
+}
+
+.userImage img {
+    width: 100%; /* Растягиваем изображение на всю ширину контейнера */
+}
+
+
+
+.cart {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Располагаем элементы по центру по горизонтали */
+    align-items: center; /* Располагаем элементы по центру по вертикали */
+    padding: 20px;
+    /*background: #EF8888;*/
+    background: gold;
+}
+
+.simpleOrder {
+    /*background-color: #ffc097;*/
+    background-color: #c852df;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 35px;
+    width: 63rem;
+}
+
+.orderDescription
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.orderDescription p
+{
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    color: #0e0010;
+}
+
+
+.product {
+    margin-bottom: 20px;
+}
+
+.productWrapper {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 20px;
+}
+
+.product img {
+    max-width: 150px;
+    max-height: 150px;
+    display: block;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.caption {
+    display: flex;
+    flex-direction: column;
+    padding: 10px; /* Уменьшаем внутренний отступ */
+    color: white;
+    position: relative;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    border-radius: 0 20px 20px 0;
+}
+
+.text {
+    flex-grow: 1;
+}
+
+.title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 18px; /* Уменьшаем размер шрифта */
+    margin-bottom: 5px; /* Уменьшаем отступ между заголовком и описанием */
+}
+
+.info {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 14px; /* Уменьшаем размер шрифта */
+    margin-bottom: 10px; /* Уменьшаем отступ между информацией и описанием */
+}
+
+.buyIt {
+    background: gold;
+    height: 50px;
+    border-radius: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.buyIt:hover {
+    background-color: crimson;
+    color: white;
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Russo+One&display=swap" rel="stylesheet">
+    <link href = "/static/css/all.css" rel = "stylesheet">
+    <link href = "/static/css/person.css" rel = "stylesheet">
+    <title>Личный_кабинет</title>
+</head>
+<body>
+<header>
+    <div id="header1">
+        <img src="/static/images/logo.png" alt="Логотип">
+        <h1 align="center" id="начало">VLang</h1>
+    </div>
+</header>
+<nav class="nav" align="center">
+    <div class="head_menu">
+        <a class="nav_link" href="/courses">Курсы</a>
+        <a class="nav_link" href="/person">Личный кабинет</a>
+        <a class="nav_link" href="#" onclick="submitForm()">Корзина</a>
+    </div>
+</nav>
+<form id="myForm" th:action="@{/korzinaPost}" th:object="${numberOfItems}" th:method="POST" style="display: none;">
+    <input id="inputItems" style="display: none;" readonly th:field="*{number}">
+</form>
+
+<main>
+    <div class="userContainer">
+        <div id="myContacts" class="contactsMenu" th:object="${user}">
+            <div class="userHeader">
+                <p>Личные данные</p>
+            </div>
+            <div class="textInput">
+                <p th:text="${'Имя: ' + user.getName()}"></p>
+                <p th:text="${'Фамилия: ' + user.getSurName()}"></p>
+                <p th:text="${'Email: ' + user.getUsername()}"></p>
+            </div>
+            <form action="/logout" method="GET" style="position: absolute; bottom: 20px; right: 20px;">
+                <button class="shineButton" type="submit">Выйти</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="cart">
+        <h1>Ваши курсы</h1>
+        <div class="orders" th:each="order : ${orders}">
+            <div class="simpleOrder">
+                <div class="orderDescription">
+                    <p th:text="${'Дата: ' + order.getOrderDate()}"></p>
+                    <p th:text="${'Сумма: ' + order.getTotalCost() + ' ₽'}"></p>
+                </div>
+                <div th:each="prod : ${order.getOrderItems()}" class="product">
+                    <div class="productWrapper">
+                        <img th:src="@{'/static/images/' + ${prod.getCours().getId()} + '.jpg'}">
+                        <div class="caption">
+                            <div class="text">
+                                <p class="title" th:text="${prod.getCours().getName()}"></p>
+                                <p class="info" th:text="${'Цена: ' + prod.getCours().getCoursPrice()  + ' ₽'}"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<script>
+    window.onload = function () {
+        getNumberOfItems();
+        fillCartItems();
+    };
+</script>
+
+
+<div class="footer">
+
+    <div class="AboutUs">
+        <h2 id="AboutUsh2">О нас</h2>
+        <p id="AboutUsp">Компания Vlang уже много лет занимается популяризацией изучения иностранных языков. С самого начала нашего пути в 2005 году мы ставили перед собой цель сделать изучение языков доступным и увлекательным для всех. <br>Создатель сайта: Михалькевич В. А. ИКБО-20-22 2024г.</p>
+    </div>
+
+    <div class="icons">
+        <div class="icon1">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0 0 50 50"
+                 style="fill:#FFFFFF;">
+                <path d="M 44.898438 14.5 C 44.5 12.300781 42.601563 10.699219 40.398438 10.199219 C 37.101563 9.5 31 9 24.398438 9 C 17.800781 9 11.601563 9.5 8.300781 10.199219 C 6.101563 10.699219 4.199219 12.199219 3.800781 14.5 C 3.398438 17 3 20.5 3 25 C 3 29.5 3.398438 33 3.898438 35.5 C 4.300781 37.699219 6.199219 39.300781 8.398438 39.800781 C 11.898438 40.5 17.898438 41 24.5 41 C 31.101563 41 37.101563 40.5 40.601563 39.800781 C 42.800781 39.300781 44.699219 37.800781 45.101563 35.5 C 45.5 33 46 29.398438 46.101563 25 C 45.898438 20.5 45.398438 17 44.898438 14.5 Z M 19 32 L 19 18 L 31.199219 25 Z"></path>
+            </svg>
+        </div>
+
+        <div class="icon2">
+            <p>vk</p>
+        </div>
+
+        <div class="icon3">
+
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256"
+                 style="fill:#FFFFFF;">
+                <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M25,2c12.703,0 23,10.297 23,23c0,12.703 -10.297,23 -23,23c-12.703,0 -23,-10.297 -23,-23c0,-12.703 10.297,-23 23,-23zM32.934,34.375c0.423,-1.298 2.405,-14.234 2.65,-16.783c0.074,-0.772 -0.17,-1.285 -0.648,-1.514c-0.578,-0.278 -1.434,-0.139 -2.427,0.219c-1.362,0.491 -18.774,7.884 -19.78,8.312c-0.954,0.405 -1.856,0.847 -1.856,1.487c0,0.45 0.267,0.703 1.003,0.966c0.766,0.273 2.695,0.858 3.834,1.172c1.097,0.303 2.346,0.04 3.046,-0.395c0.742,-0.461 9.305,-6.191 9.92,-6.693c0.614,-0.502 1.104,0.141 0.602,0.644c-0.502,0.502 -6.38,6.207 -7.155,6.997c-0.941,0.959 -0.273,1.953 0.358,2.351c0.721,0.454 5.906,3.932 6.687,4.49c0.781,0.558 1.573,0.811 2.298,0.811c0.725,0 1.107,-0.955 1.468,-2.064z"></path></g></g>
+            </svg>
+        </div>
+
+    </div>
+
+    <div class="QuickLinks">
+        <h2 id="QuickLinksh2">Навигация</h2>
+        <li><a href="/courses">Курсы</a></li>
+        <li><a href="/person">Личный кабинет</a></li>
+        <li><a href="#" onclick="submitForm()">Корзина</a></li>
+    </div>
+
+    <div class="Shop">
+        <h2 id="Shoph2">Полезное</h2>
+        <li><a href="https://www.oxfordlearnersdictionaries.com">Словарь</a></li>
+        <li><a href="https://dist.berpt.ru/pluginfile.php/34494/mod_resource/content/1/Derzhavina_Polnaya-grammatika-angliyskogo-yazyka_RuLit_Me_637391.pdf">Грамматика</a></li>
+        <li> <a href="https://kolomna-biblio.narod.ru/BIBLIO/iang.pdf">История языка</a></li>
+        <li><a href="https://www.chitai-gorod.ru/catalog/books-18030/anglijskij-yazyk-110153">Учебники</a></li>
+    </div>
+
+    <div class="Contact">
+        <h2 id="конец">Связаться с нами</h2>
+
+        <a href="tel:89267041934">8 (926) 704-19-34</a></li>
+
+        <li><?xml version="1.0" ?><svg id='img_email' viewBox="0 0 72 72"  xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M36,72 L36,72 C55.882251,72 72,55.882251 72,36 L72,36 C72,16.117749 55.882251,-3.65231026e-15 36,0 L36,0 C16.117749,3.65231026e-15 -2.4348735e-15,16.117749 0,36 L0,36 C2.4348735e-15,55.882251 16.117749,72 36,72 Z" fill="#000"/><path d="M18,26.1623226 L18,46.5476129 C18,47.6566452 18.8117419,48.5554839 19.9300645,48.5554839 L51.7447742,48.5554839 C52.8619355,48.5554839 53.6748387,47.6461935 53.6748387,46.5476129 L53.6748387,26.1623226 C53.6748387,24.9452903 52.947871,24 51.7447742,24 L19.9300645,24 C18.6805161,24 18,24.9685161 18,26.1623226 M20.9334194,27.9379355 C20.9334194,27.4467097 21.2307097,27.1656774 21.7056774,27.1656774 C21.9994839,27.1656774 33.560129,34.4910968 34.2603871,34.9207742 L36.0696774,36.0460645 C36.6433548,35.6616774 37.2193548,35.3330323 37.8139355,34.9347097 C39.0274839,34.1589677 49.8251613,27.1656774 50.1224516,27.1656774 C50.5985806,27.1656774 50.8947097,27.4467097 50.8947097,27.9379355 C50.8947097,28.4581935 49.8925161,28.9749677 49.239871,29.3732903 C45.1393548,31.8723871 41.04,34.5967742 36.980129,37.1887742 C36.7432258,37.3490323 36.2845161,37.6916129 35.9407742,37.6393548 C35.5575484,37.580129 23.7936774,30.0224516 21.6534194,28.7636129 C21.3317419,28.5743226 20.9334194,28.4012903 20.9334194,27.9379355" fill="#FFF"/></g></svg>
+            <a href="mailto:mihalkevitc.23V@yandex.ru"> Smihk.@yandex.ru</a></li>
+    </div>
+    <script src = "/static/js/items.js"></script>
+</div>
+
+
+</body>
+</html>
