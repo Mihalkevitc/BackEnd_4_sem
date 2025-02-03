@@ -16,6 +16,7 @@
 - **Frontend**: Thymeleaf, HTML, CSS, JavaScript.
 - **База данных**: PostgreSQL.
 - **Инструменты**: Gradle (система сборки), Postman (тестирование API).
+- **DevOps**: Docker.
 
 ## Особенности реализации
 - **Spring Boot**: Ускоренная разработка и высокая надежность.
